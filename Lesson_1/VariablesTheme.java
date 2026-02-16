@@ -26,7 +26,8 @@ public class VariablesTheme {
 
                 """;
         System.out.println(block);
-        System.out.println("2. РАСЧЕТ СТОИМОСТИ ТОВАРА");
+        //
+        System.out.println("\n2. РАСЧЕТ СТОИМОСТИ ТОВАРА");
         float penPrice = 10.5f;
         float bookPrice = 235.23f;
         int percent = 11;
@@ -48,7 +49,8 @@ public class VariablesTheme {
         System.out.println(totalFullPriceBd);
         System.out.println(totalPercentBd);
         System.out.println(totalPriceWithDiscountBd);
-        System.out.println("3. ПЕРЕСТАНОВКА ЗНАЧЕНИЙ ЯЧЕЕК В ТАБЛИЦЕ");
+        //
+        System.out.println("\n3. ПЕРЕСТАНОВКА ЗНАЧЕНИЙ ЯЧЕЕК В ТАБЛИЦЕ");
         System.out.println("A1 = 2, B1 = 5");
         System.out.println("третья переменная");
         int a1 = 2;
@@ -76,7 +78,8 @@ public class VariablesTheme {
         a1 = a1 ^ b1;
         System.out.println("Результат: A1 = " + a1);
         System.out.println("Результат: B1 = " + b1);
-        System.out.println("4. ДЕКОДИРОВАНИЕ СООБЩЕНИЯ");
+        //
+        System.out.println("\n4. ДЕКОДИРОВАНИЕ СООБЩЕНИЯ");
         int[] asciiCodes = {1055, 1088, 1080, 1074, 1077, 1090};
         char[] characters = new char[asciiCodes.length];
         for (int i = 0; i < asciiCodes.length; i++) {
@@ -99,7 +102,8 @@ public class VariablesTheme {
         }
         
         System.out.println();
-        System.out.println("5. АНАЛИЗ КОДА ТОВАРА");
+        //
+        System.out.println("\n5. АНАЛИЗ КОДА ТОВАРА");
         String itemCode = "234";
         System.out.println("категория товара" + itemCode.charAt(0));
         System.out.println("подкатегория" + itemCode.charAt(1));
@@ -114,7 +118,8 @@ public class VariablesTheme {
             checkCode *= itemCode.charAt(i) - '0';
         }
         System.out.println("Проверочный код:" + checkCode);
-        System.out.println("6. ТЕСТИРОВАНИЕ ДАТЧИКОВ ПЕРЕД ЗАПУСКОМ РАКЕТЫ");
+        //
+        System.out.println("\n6. ТЕСТИРОВАНИЕ ДАТЧИКОВ ПЕРЕД ЗАПУСКОМ РАКЕТЫ");
         byte temperature = Byte.MAX_VALUE;
         short pressure = Short.MAX_VALUE;
         char systemCode = Character.MAX_VALUE;
@@ -151,7 +156,8 @@ public class VariablesTheme {
                   +1: %d
                   -1: %d
                 """.formatted(time, ++time, --time));
-        System.out.println("7. ВЫВОД ПАРАМЕТРОВ JVM И ОС");
+        //
+        System.out.println("\n7. ВЫВОД ПАРАМЕТРОВ JVM И ОС");
         
         Runtime runtime = Runtime.getRuntime();
         System.out.println("========================================");
@@ -193,8 +199,8 @@ public class VariablesTheme {
         
         final String fileSeparator = System.getProperty("file.separator");
         System.out.printf("Разделитель пути:       %s%n", fileSeparator);
-        
-        System.out.println("8. ЗАМЕР ВРЕМЕНИ РАБОТЫ КОДА");
+        //
+        System.out.println("\n8. ЗАМЕР ВРЕМЕНИ РАБОТЫ КОДА");
         
         long startTime = System.nanoTime();
         LocalTime startLocalTime = LocalTime.now();
