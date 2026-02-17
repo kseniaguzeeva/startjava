@@ -1,5 +1,3 @@
-import java.lang.String;
-
 public class VariableNamesTheme {
     public static void main(String[] args) {
         System.out.println("\n1. РАЗНЫЕ ПЕРЕМЕННЫЕ");
@@ -53,15 +51,15 @@ public class VariableNamesTheme {
         System.out.println("число нулей = " + zerosNumber);
 
         // уникальное число
-        boolean uniqueNumber = false;
+        int uniqueNumber = 1;
         System.out.println("уникальное число = " + uniqueNumber);
 
         // случайное число
         int randomNumber = 4;
         System.out.println("случайное число = " + randomNumber);
-        String mathExpression = "2 + 2";
-
+        
         // математическое выражение
+        String mathExpression = "2 + 2";
         System.out.println("математическое выражение = " + mathExpression);
 
         // счет в игре
@@ -93,8 +91,8 @@ public class VariableNamesTheme {
         System.out.println("имя работника месяца = " + monthEmployeeName);
 
         // название электронной книги
-        String titleEbookName = "Atomic habits";
-        System.out.println("название электронной книги = " + titleEbookName);
+        String ebookTitle = "Atomic habits";
+        System.out.println("название электронной книги = " + ebookTitle);
 
         // размер
         char size = 'S';
@@ -115,7 +113,7 @@ public class VariableNamesTheme {
         // количество чисел в строке
         int numberQuantityInString = 0;
         System.out.println("количество чисел в строке = " + numberQuantityInString);
-        //
+        
         System.out.println("\n2. BOOLEAN-ПЕРЕМЕННЫЕ");
 
         // сотни равны?
@@ -153,12 +151,12 @@ public class VariableNamesTheme {
         // имеются уникальные строки?
         boolean hasUniqueStrings = false;
         System.out.println("имеются уникальные строки? " + hasUniqueStrings);
-        //
+        
         System.out.println("\n3. АББРЕВИАТУРЫ");
 
         // старый universally unique identifier
-        String oldGuid = "550e8400-e29b-41d4-a716-446655440000";
-        System.out.println("старый universally unique identifier = " + oldGuid);
+        String oldUuid = "550e8400-e29b-41d4-a716-446655440000";
+        System.out.println("старый universally unique identifier = " + oldUuid);
         
         // производитель оперативной памяти
         String ramManufacturer = "Samsung";
@@ -173,12 +171,12 @@ public class VariableNamesTheme {
         System.out.println("определение термина протокола передачи гипертекста = " + httpDefinition);
 
         // сокращенный uniform resource locator
-        String abbreviatedUrl = "ya.ru";
-        System.out.println("сокращенный uniform resource locator = " + abbreviatedUrl);
+        String shortUrl = "ya.ru";
+        System.out.println("сокращенный uniform resource locator = " + shortUrl);
 
         // новый идентификатор клиента
-        String newClientId = "777";
-        System.out.println("новый идентификатор клиента = " + newClientId);
+        String newCid = "777";
+        System.out.println("новый идентификатор клиента = " + newCid);
 
         // количество символов в american standard code for information interchange
         String asciiSymbolCount = "128";
