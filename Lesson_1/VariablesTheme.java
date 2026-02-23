@@ -6,79 +6,69 @@ import java.time.format.DateTimeFormatter;
 public class VariablesTheme {
     public static void main(String[] args) {
         System.out.println("1. ВЫВОД ASCII-ГРАФИКИ");
-        String line1 = String.join(" ", "                        /\\");
-        String line2 = String.join(" ", "   J    a  v     v     /  \\");
-        String line3 = String.join(" ", "   J   a a  v   v     /_( )\\");
-        String line4 = String.join(" ", "J  J  aaaaa  V V     /      \\");
-        String line5 = String.join(" ", " JJ  a     a  V     /___/\\___\\");
-        System.out.println(line1);
-        System.out.println(line2);
-        System.out.println(line3);
-        System.out.println(line4);
-        System.out.println(line5);
-        System.out.println();
+        System.out.println(String.join("\n",
+                "                     /\\",
+                "   J    a  v     v  /  \\",
+                "   J   a a  v   v  /_( )\\",
+                "J  J  aaaaa  V V  /      \\",
+                " JJ  a     a  V  /___/\\___\\"
+        ));
         String block = """
                  /\\            \s
            J    /  \\  v     v  a
            J   /_( )\\  v   v  a a
         J  J  /      \\  V V  aaaaa
-         JJ  /___/\\___\\  V  a     a
-
-                """;
+         JJ  /___/\\___\\  V  a     a""";
         System.out.println(block);
-        //
+        
         System.out.println("\n2. РАСЧЕТ СТОИМОСТИ ТОВАРА");
         float penPrice = 10.5f;
         float bookPrice = 235.23f;
         int percent = 11;
-        float totalFullPrice = penPrice + bookPrice;
-        float totalPercent = totalFullPrice * percent / 100;
-        float totalPriceWithDiscount = totalFullPrice - totalPercent;
-        System.out.println(totalFullPrice);
-        System.out.println(totalPercent);
-        System.out.println(totalPriceWithDiscount);
+        float basePrice = penPrice + bookPrice;
+        float discountSum = basePrice * percent / 100;
+        float basePriceWithDiscount = basePrice - discountSum;
+        System.out.println("стоимость товаров без скидки " + basePrice);
+        System.out.println("сумма скидки " + discountSum);
+        System.out.println("стоимость товаров со скидкой " + basePriceWithDiscount);
         BigDecimal penPriceBd = new BigDecimal("10.5");
         BigDecimal bookPriceBd = new BigDecimal("235.23");
         BigDecimal percentBd = new BigDecimal("11");
-        BigDecimal totalFullPriceBd = penPriceBd.add(bookPriceBd)
+        BigDecimal basePriceBd = penPriceBd.add(bookPriceBd)
                 .setScale(2, RoundingMode.HALF_UP);
-        BigDecimal totalPercentBd = totalFullPriceBd.multiply(percentBd)
+        BigDecimal discountSumBd = basePriceBd.multiply(percentBd)
                 .divide(new BigDecimal("100"), 2, RoundingMode.HALF_UP);
-        BigDecimal totalPriceWithDiscountBd = totalFullPriceBd
-                .subtract(totalPercentBd).setScale(2, RoundingMode.HALF_UP);
-        System.out.println(totalFullPriceBd);
-        System.out.println(totalPercentBd);
-        System.out.println(totalPriceWithDiscountBd);
-        //
+        BigDecimal basePriceWithDiscountBd = basePriceBd
+                .subtract(discountSumBd).setScale(2, RoundingMode.HALF_UP);
+        System.out.println("стоимость товаров без скидки в BigDecimal " + basePriceBd);
+        System.out.println("сумма скидки в BigDecimal " + discountSumBd);
+        System.out.println("стоимость товаров со скидкой в  BigDecimal " + basePriceWithDiscountBd);
+        
         System.out.println("\n3. ПЕРЕСТАНОВКА ЗНАЧЕНИЙ ЯЧЕЕК В ТАБЛИЦЕ");
-        System.out.println("A1 = 2, B1 = 5");
         System.out.println("третья переменная");
+        System.out.println("a1 = 2, b1 = 5");
         int a1 = 2;
         int b1 = 5;
         int temp = a1;
         a1 = b1;
         b1 = temp;
-        System.out.println("Результат: A1 = " + a1);
-        System.out.println("Результат: B1 = " + b1);
+        System.out.println("Результат: a1 = " + a1);
+        System.out.println("Результат: b1 = " + b1);
         System.out.println("арифметические операции");
+        System.out.println("a1 = 5, b1 = 2");
         a1 = a1 + b1; 
         b1 = a1 - b1;  
-        a1 = a1 - b1;  
-        a1 = a1 + b1;
-        b1 = a1 - b1;
-        a1 = a1 - b1; 
-        System.out.println("Результат: A1 = " + a1);
-        System.out.println("Результат: B1 = " + b1);
+        a1 = a1 - b1;   
+        System.out.println("Результат: a1 = " + a1);
+        System.out.println("Результат: b1 = " + b1);
         System.out.println("побитовая операция ^");
+        System.out.println("a1 = 2, b1 = 5");
         a1 = a1 ^ b1;
         b1 = a1 ^ b1;
         a1 = a1 ^ b1;
-        a1 = a1 ^ b1;
-        b1 = a1 ^ b1;
-        a1 = a1 ^ b1;
-        System.out.println("Результат: A1 = " + a1);
-        System.out.println("Результат: B1 = " + b1);
-        //
+        System.out.println("Результат: a1 = " + a1);
+        System.out.println("Результат: b1 = " + b1);
+        
         System.out.println("\n4. ДЕКОДИРОВАНИЕ СООБЩЕНИЯ");
         int[] asciiCodes = {1055, 1088, 1080, 1074, 1077, 1090};
         char[] characters = new char[asciiCodes.length];
@@ -86,140 +76,95 @@ public class VariablesTheme {
             characters[i] = (char) asciiCodes[i];
         }
         System.out.println("Коды ASCII:");
-        for (int i = 0; i < asciiCodes.length; i++) {
-            if (i % 3 == 0 && i != 0) {
-                System.out.println();
-            }
-            System.out.printf("%-6d", asciiCodes[i]);
-        }
-        System.out.println();
-        System.out.println("Символы:");
-        for (int i = 0; i < characters.length; i++) {
-            if (i % 3 == 0 && i != 0) {
-                System.out.println();
-            }
-            System.out.printf("%-6c", characters[i]);
-        }
+        int code1 = 1055;
+        int code2 = 1088;
+        int code3 = 1080;
+        int code4 = 1074;
+        int code5 = 1077;
+        int code6 = 1090;
+        System.out.printf("%-6d%-6d%-6d%-6d%-6d%-6d%n", 
+                code1, code2, code3, code4, code5, code6);
+        System.out.printf("%-6c%-6c%-6c%-6c%-6c%-6c%n", 
+                (char) code1, (char) code2, (char) code3, 
+                (char) code4, (char) code5, (char) code6);
         
-        System.out.println();
-        //
         System.out.println("\n5. АНАЛИЗ КОДА ТОВАРА");
-        String itemCode = "234";
-        System.out.println("категория товара" + itemCode.charAt(0));
-        System.out.println("подкатегория" + itemCode.charAt(1));
-        System.out.println("тип упаковки" + itemCode.charAt(2));
-        int checkSum = 0;
-        for (int i = 0; i < itemCode.length(); i++) {
-            checkSum += itemCode.charAt(i) - '0';
-        }
-        System.out.println("Контрольная сумма: " + checkSum);
-        int checkCode = 1;
-        for (int i = 0; i < itemCode.length(); i++) {
-            checkCode *= itemCode.charAt(i) - '0';
-        }
-        System.out.println("Проверочный код:" + checkCode);
-        //
+        int itemCode = 234;
+        int category = itemCode / 100;
+        int subcategory = itemCode / 10 % 10;
+        int packageType = itemCode % 10;
+        System.out.println("категория товара - " + category);
+        System.out.println("подкатегория - " + subcategory);
+        System.out.println("тип упаковки - " + packageType);
+        int numberSum = category + subcategory + packageType;
+        System.out.println("Контрольная сумма = " + numberSum);
+        int verificationCode = category * subcategory * packageType;
+        System.out.println("Проверочный код = " + verificationCode);
+
         System.out.println("\n6. ТЕСТИРОВАНИЕ ДАТЧИКОВ ПЕРЕД ЗАПУСКОМ РАКЕТЫ");
         byte temperature = Byte.MAX_VALUE;
         short pressure = Short.MAX_VALUE;
-        char systemCode = Character.MAX_VALUE;
-        int distance = Integer.MAX_VALUE;
-        long time = Long.MAX_VALUE;
-        System.out.println("""
-                [Температура, °C]
-                  Исходное: %d
-                  +1: %d
-                  -1: %d
-                """.formatted(temperature, ++temperature, --temperature));
-        System.out.println("""
-                [Давление, psi]:
-                  Исходное: %d
-                  +1: %d
-                  -1: %d
-                """.formatted(pressure, ++pressure, --pressure));
-        System.out.println("""
-                [Код состояния, код]:
-                  Исходное: %d
-                  +1: %d
-                  -1: %d
-                """.formatted((int) systemCode, (int) ++systemCode, 
-                        (int) --systemCode));
-        System.out.println("""
-                [Пройденное расстояние, м]:
-                  Исходное: %d
-                  +1: %d
-                  -1: %d
-                """.formatted(distance, ++distance, --distance));
-        System.out.println("""
-                [Время с момента старта, мс]:
-                  Исходное: %d
-                  +1: %d
-                  -1: %d
-                """.formatted(time, ++time, --time));
+        char statusCode = Character.MAX_VALUE;
+        int distanceTraveled = Integer.MAX_VALUE;
+        long timeFromStart = Long.MAX_VALUE;
+        System.out.println("[Температура, °C]:" + "\n" +
+                "  Исходное: " + temperature + "\n" +
+                "  +1: " + (temperature + 1) + "\n" +
+                "  -1: " + (temperature - 1));
+        System.out.println("[Давление, psi]:" + "\n" +
+                "  Исходное: " + pressure + "\n" +
+                "  +1: " + (pressure + 1) + "\n" +
+                "  -1: " + (pressure - 1));
+        System.out.println("[Код состояния, код]:" + "\n" +
+                "  Исходное: " + statusCode + "\n" +
+                "  +1: " + (statusCode + 1) + "\n" +
+                "  -1: " + (statusCode - 1));
+        System.out.println("[Пройденное расстояние, м]:" + "\n" +
+                "  Исходное: " + distanceTraveled + "\n" +
+                "  +1: " + (distanceTraveled + 1) + "\n" +
+                "  -1: " + (distanceTraveled - 1));
+        System.out.println("[Время с момента старта, мс]:" + "\n" +
+                "  Исходное: " + timeFromStart + "\n" +
+                "  +1: " + (timeFromStart + 1) + "\n" +
+                "  -1: " + (timeFromStart - 1));
         //
         System.out.println("\n7. ВЫВОД ПАРАМЕТРОВ JVM И ОС");
-        
         Runtime runtime = Runtime.getRuntime();
-        System.out.println("========================================");
-        System.out.println("ХАРАКТЕРИСТИКИ JVM");
-        System.out.printf("Доступное число ядер:   %d%n", 
-                runtime.availableProcessors());
-        
+        int availableProcessors = runtime.availableProcessors();
         long totalMemory = runtime.totalMemory();
         long freeMemory = runtime.freeMemory();
         long maxMemory = runtime.maxMemory();
         long usedMemory = totalMemory - freeMemory;
-        
-        double totalMemoryMb = totalMemory / (1024.0 * 1024.0);
-        double freeMemoryMb = freeMemory / (1024.0 * 1024.0);
-        double usedMemoryMb = usedMemory / (1024.0 * 1024.0);
-        double maxMemoryMb = maxMemory / (1024.0 * 1024.0);
-        
-        System.out.printf("Выделенная память:      %.1f МБ%n", totalMemoryMb);
-        System.out.printf("Свободная память:       %.1f МБ%n", freeMemoryMb);
-        System.out.printf("Используемая память:    %.1f МБ%n", usedMemoryMb);
-        System.out.printf("Максимальная память:    %.1f МБ%n", maxMemoryMb);
-        
-        System.out.println();
-        System.out.println("ПАРАМЕТРЫ ОС");
-        
-        // Получаем и сразу используем параметры ОС
-        String systemDrive = System.getenv("SystemDrive");
-        if (systemDrive == null || systemDrive.isEmpty()) {
-            systemDrive = "C:";
-        }
-        System.out.printf("Системный диск:         %s%n", systemDrive);
-        
-        String osName = System.getProperty("os.name");
+        System.out.println("Характеристики JVM");
+        System.out.println("Доступное число ядер:" + runtime.availableProcessors());
+        System.out.println("выделенная память (МБ): " + (totalMemory / 1048576));
+        System.out.println("Свободная память (Мб): " + (freeMemory / 1048576));
+        System.out.println("Используемая память (Мб): " + (usedMemory / 1048576));
+        System.out.println("Максимальная память (Мб): " + (maxMemory / 1048576));
+        String systemDrive = System.getProperty("user.dir");
         String osVersion = System.getProperty("os.version");
-        System.out.printf("Версия ОС:              %s %s%n", osName, osVersion);
-        
-        final String javaVersion = System.getProperty("java.version");
-        System.out.printf("Версия Java:            %s%n", javaVersion);
-        
-        final String fileSeparator = System.getProperty("file.separator");
-        System.out.printf("Разделитель пути:       %s%n", fileSeparator);
-        //
+        String javaVersion = System.getProperty("java.version");
+        String fileSeparator = System.getProperty("file.separator");
+        System.out.println("\nПАРАМЕТРЫ ОС");
+        System.out.println("системный диск: " + systemDrive);
+        System.out.println("версия ОС: " + osVersion);
+        System.out.println("версия Java: " + javaVersion);
+        System.out.println("символ разделения пути (сепаратор). И это не точка с запятой: " + fileSeparator);
+
         System.out.println("\n8. ЗАМЕР ВРЕМЕНИ РАБОТЫ КОДА");
-        
         long startTime = System.nanoTime();
         LocalTime startLocalTime = LocalTime.now();
-        
         long endTime = System.nanoTime();
         LocalTime endLocalTime = LocalTime.now();
-        
         double executionTimeSeconds = (endTime - startTime) / 1_000_000_000.0;
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
         String startTimeFormatted = startLocalTime.format(timeFormatter);
         String endTimeFormatted = endLocalTime.format(timeFormatter);
         String result = String.format("""
                 | Старт проверки | %s |
-                +----------------+--------------+
                 | Финиш проверки | %s |
-                +----------------+--------------+
                 | Время работы   | %.3f сек    |
                 """, startTimeFormatted, endTimeFormatted, executionTimeSeconds);
-        
         System.out.print(result);
     }
 }
