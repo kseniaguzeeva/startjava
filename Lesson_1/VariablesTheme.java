@@ -150,6 +150,11 @@ public class VariablesTheme {
         System.out.println("версия ОС: " + osVersion);
         System.out.println("версия Java: " + javaVersion);
         System.out.println("символ разделения пути (сепаратор). И это не точка с запятой: " + fileSeparator);
+        System.out.println("""
+                        Характеристики JVM
+                        Доступное число ядер: %d
+                        выделенная память (МБ): %d
+                        """);
 
         System.out.println("\n8. ЗАМЕР ВРЕМЕНИ РАБОТЫ КОДА");
         long startTime = System.nanoTime();
