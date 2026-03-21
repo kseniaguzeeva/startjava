@@ -14,7 +14,7 @@ public class VariablesTheme {
                 " JJ  a     a  V  /___/\\___\\"
         ));
         String block = """
-                 /\\            \s
+                 /\\            
            J    /  \\  v     v  a
            J   /_( )\\  v   v  a a
         J  J  /      \\  V V  aaaaa
@@ -76,30 +76,37 @@ public class VariablesTheme {
             characters[i] = (char) asciiCodes[i];
         }
         System.out.println("Коды ASCII:");
-        int code1 = 1055;
-        int code2 = 1088;
-        int code3 = 1080;
-        int code4 = 1074;
-        int code5 = 1077;
-        int code6 = 1090;
+        int asciiCode1 = 1055;
+        int asciiCode2 = 1088;
+        int asciiCode3 = 1080;
+        int asciiCode4 = 1074;
+        int asciiCode5 = 1077;
+        int asciiCode6 = 1090;
         System.out.printf("%-6d%-6d%-6d%-6d%-6d%-6d%n", 
-                code1, code2, code3, code4, code5, code6);
+                asciiCode1, asciiCode2, asciiCode3, asciiCode4, asciiCode5, asciiCode6);
+        char asciiSymbol1 = (char) asciiCode1;
+        char asciiSymbol2 = (char) asciiCode2;
+        char asciiSymbol3 = (char) asciiCode3;
+        char asciiSymbol4 = (char) asciiCode4;
+        char asciiSymbol5 = (char) asciiCode5;
+        char asciiSymbol6 = (char) asciiCode6;
         System.out.printf("%-6c%-6c%-6c%-6c%-6c%-6c%n", 
-                (char) code1, (char) code2, (char) code3, 
-                (char) code4, (char) code5, (char) code6);
+                asciiSymbol1, asciiSymbol2, asciiSymbol3, asciiSymbol4, asciiSymbol5, asciiSymbol6);
         
         System.out.println("\n5. АНАЛИЗ КОДА ТОВАРА");
         int itemCode = 234;
         int category = itemCode / 100;
         int subcategory = itemCode / 10 % 10;
         int packageType = itemCode % 10;
-        System.out.println("категория товара - " + category);
-        System.out.println("подкатегория - " + subcategory);
-        System.out.println("тип упаковки - " + packageType);
-        int numberSum = category + subcategory + packageType;
-        System.out.println("Контрольная сумма = " + numberSum);
+        int digitSum = category + subcategory + packageType;
         int verificationCode = category * subcategory * packageType;
-        System.out.println("Проверочный код = " + verificationCode);
+                System.out.println("""
+                        категория: %d
+                        подкатегория: %d
+                        тип упаковки: %d
+                        Контрольная сумма: %d
+                        Проверочный код: %d
+                        """.formatted(category, subcategory, packageType, digitSum, verificationCode));
 
         System.out.println("\n6. ТЕСТИРОВАНИЕ ДАТЧИКОВ ПЕРЕД ЗАПУСКОМ РАКЕТЫ");
         byte temperature = Byte.MAX_VALUE;
@@ -127,7 +134,7 @@ public class VariablesTheme {
                 "  Исходное: " + timeFromStart + "\n" +
                 "  +1: " + (timeFromStart + 1) + "\n" +
                 "  -1: " + (timeFromStart - 1));
-        //
+
         System.out.println("\n7. ВЫВОД ПАРАМЕТРОВ JVM И ОС");
         Runtime runtime = Runtime.getRuntime();
         int availableProcessors = runtime.availableProcessors();
