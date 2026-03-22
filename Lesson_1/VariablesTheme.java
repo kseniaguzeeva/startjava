@@ -110,30 +110,40 @@ public class VariablesTheme {
 
         System.out.println("\n6. ТЕСТИРОВАНИЕ ДАТЧИКОВ ПЕРЕД ЗАПУСКОМ РАКЕТЫ");
         byte temperature = Byte.MAX_VALUE;
+                System.out.println("""
+                        [Температура, °C]:
+                        Исходное: %d
+                        +1: %d
+                        -1: %d
+                        """.formatted(temperature, ++temperature, --temperature));
         short pressure = Short.MAX_VALUE;
+                System.out.println("""
+                        [Давление, psi]:
+                        Исходное: %d
+                        +1: %d
+                        -1: %d
+                        """.formatted(pressure, ++pressure, --pressure));
         char statusCode = Character.MAX_VALUE;
+                System.out.println("""
+                        [Код состояния, код]:
+                        Исходное: %c
+                        +1: %c
+                        -1: %c
+                        """.formatted(statusCode, ++statusCode, --statusCode));
         int distanceTraveled = Integer.MAX_VALUE;
+                System.out.println("""
+                        [Пройденное расстояние, м]:
+                        Исходное: %d
+                        +1: %d
+                        -1: %d
+                        """.formatted(distanceTraveled, ++distanceTraveled, --distanceTraveled));
         long timeFromStart = Long.MAX_VALUE;
-        System.out.println("[Температура, °C]:" + "\n" +
-                "  Исходное: " + temperature + "\n" +
-                "  +1: " + (temperature + 1) + "\n" +
-                "  -1: " + (temperature - 1));
-        System.out.println("[Давление, psi]:" + "\n" +
-                "  Исходное: " + pressure + "\n" +
-                "  +1: " + (pressure + 1) + "\n" +
-                "  -1: " + (pressure - 1));
-        System.out.println("[Код состояния, код]:" + "\n" +
-                "  Исходное: " + statusCode + "\n" +
-                "  +1: " + (statusCode + 1) + "\n" +
-                "  -1: " + (statusCode - 1));
-        System.out.println("[Пройденное расстояние, м]:" + "\n" +
-                "  Исходное: " + distanceTraveled + "\n" +
-                "  +1: " + (distanceTraveled + 1) + "\n" +
-                "  -1: " + (distanceTraveled - 1));
-        System.out.println("[Время с момента старта, мс]:" + "\n" +
-                "  Исходное: " + timeFromStart + "\n" +
-                "  +1: " + (timeFromStart + 1) + "\n" +
-                "  -1: " + (timeFromStart - 1));
+                System.out.println("""
+                        [Время с момента старта, мс]:
+                        Исходное: %d
+                        +1: %d
+                        -1: %d
+                        """.formatted(timeFromStart, ++timeFromStart, --timeFromStart));
 
         System.out.println("\n7. ВЫВОД ПАРАМЕТРОВ JVM И ОС");
         Runtime runtime = Runtime.getRuntime();
