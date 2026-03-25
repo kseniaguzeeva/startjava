@@ -70,11 +70,6 @@ public class VariablesTheme {
         System.out.println("Результат: b1 = " + b1);
         
         System.out.println("\n4. ДЕКОДИРОВАНИЕ СООБЩЕНИЯ");
-        int[] asciiCodes = {1055, 1088, 1080, 1074, 1077, 1090};
-        char[] characters = new char[asciiCodes.length];
-        for (int i = 0; i < asciiCodes.length; i++) {
-            characters[i] = (char) asciiCodes[i];
-        }
         System.out.println("Коды ASCII:");
         int asciiCode1 = 1055;
         int asciiCode2 = 1088;
@@ -122,7 +117,7 @@ public class VariablesTheme {
                         Исходное: %d
                         +1: %d
                         -1: %d
-                        """.formatted(pressure, ++pressure, --pressure));
+                        """.formatted(pressure, ++pressure, --pressure--));
         char statusCode = Character.MAX_VALUE;
                 System.out.println("""
                         [Код состояния, код]:
