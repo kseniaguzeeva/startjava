@@ -95,7 +95,7 @@ public class VariablesTheme {
         int packageType = itemCode % 10;
         int digitSum = category + subcategory + packageType;
         int verificationCode = category * subcategory * packageType;
-                System.out.println("""
+        System.out.println("""
                         категория: %d
                         подкатегория: %d
                         тип упаковки: %d
@@ -105,35 +105,35 @@ public class VariablesTheme {
 
         System.out.println("\n6. ТЕСТИРОВАНИЕ ДАТЧИКОВ ПЕРЕД ЗАПУСКОМ РАКЕТЫ");
         byte temperature = Byte.MAX_VALUE;
-                System.out.println("""
+        System.out.println("""
                         [Температура, °C]:
                         Исходное: %d
                         +1: %d
                         -1: %d
                         """.formatted(temperature, ++temperature, --temperature));
         short pressure = Short.MAX_VALUE;
-                System.out.println("""
+        System.out.println("""
                         [Давление, psi]:
                         Исходное: %d
                         +1: %d
                         -1: %d
-                        """.formatted(pressure, ++pressure, --pressure--));
+                        """.formatted(pressure, ++pressure, --pressure));
         char statusCode = Character.MAX_VALUE;
-                System.out.println("""
+        System.out.println("""
                         [Код состояния, код]:
                         Исходное: %c
                         +1: %c
                         -1: %c
                         """.formatted(statusCode, ++statusCode, --statusCode));
         int distanceTraveled = Integer.MAX_VALUE;
-                System.out.println("""
+        System.out.println("""
                         [Пройденное расстояние, м]:
                         Исходное: %d
                         +1: %d
                         -1: %d
                         """.formatted(distanceTraveled, ++distanceTraveled, --distanceTraveled));
         long timeFromStart = Long.MAX_VALUE;
-                System.out.println("""
+        System.out.println("""
                         [Время с момента старта, мс]:
                         Исходное: %d
                         +1: %d
@@ -143,45 +143,43 @@ public class VariablesTheme {
         System.out.println("\n7. ВЫВОД ПАРАМЕТРОВ JVM И ОС");
         Runtime runtime = Runtime.getRuntime();
         int availableProcessors = runtime.availableProcessors();
-        long totalMemory = runtime.totalMemory();
-        long freeMemory = runtime.freeMemory();
-        long maxMemory = runtime.maxMemory();
-        long usedMemory = totalMemory - freeMemory;
-        System.out.println("Характеристики JVM");
-        System.out.println("Доступное число ядер:" + runtime.availableProcessors());
-        System.out.println("выделенная память (МБ): " + (totalMemory / 1048576));
-        System.out.println("Свободная память (Мб): " + (freeMemory / 1048576));
-        System.out.println("Используемая память (Мб): " + (usedMemory / 1048576));
-        System.out.println("Максимальная память (Мб): " + (maxMemory / 1048576));
+        long totalMemory = runtime.totalMemory() / 1048576;
+        long freeMemory = runtime.freeMemory() / 1048576;
+        long maxMemory = runtime.maxMemory() / 1048576;
+        long usedMemory = (totalMemory - freeMemory) / 1048576;
         String systemDrive = System.getProperty("user.dir");
         String osVersion = System.getProperty("os.version");
         String javaVersion = System.getProperty("java.version");
         String fileSeparator = System.getProperty("file.separator");
-        System.out.println("\nПАРАМЕТРЫ ОС");
-        System.out.println("системный диск: " + systemDrive);
-        System.out.println("версия ОС: " + osVersion);
-        System.out.println("версия Java: " + javaVersion);
-        System.out.println("символ разделения пути (сепаратор). И это не точка с запятой: " + fileSeparator);
         System.out.println("""
                         Характеристики JVM
                         Доступное число ядер: %d
                         выделенная память (МБ): %d
-                        """);
+                        Свободная память (Мб): %d
+                        Максимальная память (Мб): %d
+                        Используемая память (Мб): %d
+                        ПАРАМЕТРЫ ОС
+                        системный диск: %s
+                        версия ОС: %s
+                        версия Java: %s
+                        символ разделения пути : %s
+                        """.formatted(availableProcessors, totalMemory, freeMemory, maxMemory, usedMemory, 
+                                systemDrive, osVersion, javaVersion, fileSeparator));
 
         System.out.println("\n8. ЗАМЕР ВРЕМЕНИ РАБОТЫ КОДА");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:SSS");
         long startTime = System.nanoTime();
         LocalTime startLocalTime = LocalTime.now();
         long endTime = System.nanoTime();
         LocalTime endLocalTime = LocalTime.now();
-        double executionTimeSeconds = (endTime - startTime) / 1_000_000_000.0;
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
-        String startTimeFormatted = startLocalTime.format(timeFormatter);
-        String endTimeFormatted = endLocalTime.format(timeFormatter);
-        String result = String.format("""
+        float executionTimeSeconds = (endTime - startTime) / 1_000_000_000;
+        LocalTime currentLocalTime = LocalTime.now();
+        System.out.println("""
                 | Старт проверки | %s |
                 | Финиш проверки | %s |
-                | Время работы   | %.3f сек    |
-                """, startTimeFormatted, endTimeFormatted, executionTimeSeconds);
-        System.out.print(result);
+                | Время работы   | %.3f сек |
+                | Текущее время  | %s |
+                """.formatted(dtf.format(startLocalTime), dtf.format(endLocalTime), executionTimeSeconds, 
+                        dtf.format(currentLocalTime)));
     }
 }
